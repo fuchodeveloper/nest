@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "scope": "custom_scope",
+  "github": {
+    "enabled": false
+  },
+  "builds": [
+    {
+      "src": "/dist/main.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/dist/main.js" },
+    { "handle": "filesystem" },
+    { "src": "/assets/(.*)", "dest": "/dist/apps/react-app/assets/$1" },
+    { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/react-app/$1.$2" },
+    { "src": "/(.*)", "dest": "/dist/apps/react-app/index.html" }
+  ]
+}
